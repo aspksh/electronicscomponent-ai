@@ -49,7 +49,7 @@ if uploaded_file is not None:
     img = Image.open(uploaded_file).convert("RGB")
     st.image(img, caption="Uploaded Image")
 
-img = transform(img).unsqueeze(0)
+    img = transform(img).unsqueeze(0)
 
 with torch.no_grad():
   output = model(img)
