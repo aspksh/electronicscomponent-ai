@@ -51,8 +51,8 @@ if uploaded_file is not None:
 
     img = transform(img).unsqueeze(0)
 
-with torch.no_grad():
-  output = model(img)
-  _, pred = torch.max(output, 1)
-
-st.success(f"Prediction: {classes[pred.item()]}")
+    with torch.no_grad():
+      output = model(img)
+      _, pred = torch.max(output, 1)
+    
+    st.success(f"Prediction: {classes[pred.item()]}")
