@@ -54,6 +54,8 @@ if uploaded_files:
     
         with torch.no_grad():
           output = model(img)
+          probs = torch.softmax(output, dim=1)  
           _, pred = torch.max(output, 1)
         
-        st.success(f"Prediction: {classes[pred.item()]}")
+          confidence = probs[0][pred.item()].item()*100  
+        st.success(f"{uploaded_file.name} → {classes[pred.item()]} ({confidence:.2f}%)")
