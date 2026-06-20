@@ -43,16 +43,17 @@ transform = transforms.Compose([
 
 st.title(" Electronics Component Classifier")
 
-uploaded_file = st.file_uploader("Upload Image", type=["jpg","png"])
+uploaded_files = st.file_uploader("Upload Image", type=["jpg","png"] accept_multiple_files=True)
 
-if uploaded_file is not None:
-    img = Image.open(uploaded_file).convert("RGB")
-    st.image(img, caption="Uploaded Image")
-
-    img = transform(img).unsqueeze(0)
-
-    with torch.no_grad():
-      output = model(img)
-      _, pred = torch.max(output, 1)
+if uploaded_files:
+    for uploaded_file in uploaded_files:                                
+        img = Image.open(uploaded_file).convert("RGB")
+        st.image(img, caption="Uploaded Image")
     
-    st.success(f"Prediction: {classes[pred.item()]}")
+        img = transform(img).unsqueeze(0)
+    
+        with torch.no_grad():
+          output = model(img)
+          _, pred = torch.max(output, 1)
+        
+        st.success(f"Prediction: {classes[pred.item()]}")
