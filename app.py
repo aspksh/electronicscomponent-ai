@@ -43,8 +43,8 @@ transform = transforms.Compose([
 
 st.title(" Electronics Component Classifier")
 st.write("It can classify Buzzer, Capacitor, Diode, IC, Inductor, LDR, LED,"
-          "Potentiometer,Relay, Resistor, Switch, Sensor IR, Sensor LM35,"
-          "Sensor Ultrasonik, Transistor")
+          "Potentiometer,Relay, Resistor, Switch, Sensor LM35,"
+          "Sensor Ultrasonik,")
 
 uploaded_files = st.file_uploader("Upload Image", type=["jpg","png"], accept_multiple_files=True)
 
