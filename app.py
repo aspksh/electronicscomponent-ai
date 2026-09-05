@@ -4,7 +4,6 @@ import torch.nn as nn
 from torchvision import transforms
 from PIL import Image
 
-# same model architecture
 class ComponentCNN(nn.Module):
     def __init__(self, num_classes):
         super(ComponentCNN, self).__init__()
@@ -25,13 +24,11 @@ class ComponentCNN(nn.Module):
         x = self.fc2(x)
         return x
 
-# load model
 device = torch.device("cpu")
 model = ComponentCNN(num_classes=15)
 model.load_state_dict(torch.load("electronics_cnn.pth", map_location=device))
 model.eval()
 
-# classes (same order as training)
 classes = ['Buzzer','Capasitor','Diode','IC','Induktor','LDR','LED',
           'Potensiometer','Relay','Resistor','Saklar','Sensor IR',
           'Sensor LM35','Sensor Ultrasonik','Transistor']
